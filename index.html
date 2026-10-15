@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101315"><meta name="description" content="A hands-on 3D Rubik’s Cube studio. Turn, scramble, customize, and learn.">
+  <title>Cube Studio — Turn it your way</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="#"><span class="brand-mark"><i></i><i></i><i></i><i></i></span><span>CUBE<span class="brand-light">STUDIO</span></span></a><div class="top-center"><span class="live-dot"></span> YOUR PERSONAL CUBE SPACE</div><a class="help-link" href="#learn">How to play <span>↗</span></a></header>
+  <main>
+    <section class="hero"><div class="eyebrow"><span class="eyebrow-line"></span> A LITTLE PRACTICE. A LOT OF SATISFACTION.</div><h1>Turn it <span>your way.</span></h1><p class="intro">A real 3D cube, right here. Spin it, twist a face, mix it up, and find your way back to solved.</p></section>
+    <section class="workspace" aria-label="Interactive Rubik's Cube">
+      <div class="stage-card"><div class="stage-top"><div class="stage-label"><span class="stage-orb"></span><span>THE PLAYGROUND</span></div><button class="icon-btn" id="viewReset" aria-label="Reset camera" title="Reset camera">⟳</button></div>
+        <div class="canvas-wrap" id="cubeMount"><div class="canvas-hint"><span>↖</span> DRAG TO ORBIT</div><div class="loading" id="loading">Preparing your cube…</div></div>
+        <div class="stage-bottom"><div class="drag-tip"><span class="mouse-icon">⌁</span> DRAG ANYWHERE TO ROTATE</div><div class="stage-controls"><button class="round-btn" id="undoBtn" title="Undo last move" aria-label="Undo last move">↶</button><button class="round-btn" id="redoBtn" title="Redo move" aria-label="Redo move">↷</button><span class="control-divider"></span><button class="round-btn" id="zoomOut" title="Zoom out">−</button><button class="round-btn" id="zoomIn" title="Zoom in">+</button></div></div>
+      </div>
+      <aside class="side-column"><div class="stats-card"><div class="card-kicker">YOUR SESSION</div><div class="stats-row"><div class="stat"><span class="stat-label">TIME</span><span class="stat-value" id="timer">00:00</span></div><span class="stat-sep"></span><div class="stat"><span class="stat-label">MOVES</span><span class="stat-value"><span id="moveCount">0</span><small> turns</small></span></div></div><div class="stat-foot"><span class="status-indicator"></span><span id="statusText">Cube is solved. Your move.</span></div></div>
+        <div class="moves-card"><div class="card-head"><div><div class="card-kicker">MAKE A MOVE</div><div class="card-title">Turn a face</div></div><span class="key-badge">KEYBOARD READY</span></div><div class="face-grid" id="faceControls"></div><div class="move-note"><span>✳</span><span>Tap a face to turn it. <b>Shift + tap</b> turns the other way.</span></div></div>
+        <div class="action-card"><div class="action-copy"><div class="card-kicker">READY FOR A CHALLENGE?</div><div class="card-title">Mix it up.</div><p>Scramble your cube, then see if you can bring it home.</p></div><button class="primary-btn" id="scrambleBtn">Scramble cube <span>↗</span></button><button class="secondary-btn" id="solveBtn">↺ <span>Reset to solved</span></button></div>
+      </aside>
+    </section>
+    <section class="below-grid"><div class="colors-card"><div class="section-heading"><div><div class="card-kicker">MAKE IT YOURS</div><h2>Color lab<span class="heading-period">.</span></h2><p>Pick a face, then choose a color for its center.</p></div><span class="palette-icon">◒</span></div><div class="color-content"><div class="face-picker" id="colorFacePicker"></div><div class="color-controls"><label for="colorPicker">CENTER STICKER COLOR</label><div class="color-input-row"><input id="colorPicker" type="color" value="#f7f7f3"><span id="colorHex">#F7F7F3</span><button id="applyColor" class="apply-btn">Apply color</button></div><div class="palette-swatches" id="swatches"></div></div></div><div class="color-note">Edits apply to the selected face’s center sticker. Restore the classic palette anytime.</div></div>
+      <div class="learn-card" id="learn"><div class="card-kicker">A FRIENDLY START</div><h2>Find your way <span>home.</span></h2><p class="learn-intro">A classic beginner route is to solve one layer at a time. Take it slowly; the cube won’t mind.</p><div class="learn-steps"><div class="learn-step"><span class="step-number">01</span><div><b>Make a cross</b><span>Start with the white center. Match each edge’s side color to its center.</span></div><span class="step-arrow">↗</span></div><div class="learn-step"><span class="step-number">02</span><div><b>Finish the first layer</b><span>Place the white corners, then solve the middle-layer edges.</span></div><span class="step-arrow">↗</span></div><div class="learn-step"><span class="step-number">03</span><div><b>Complete the last layer</b><span>Make a top cross, position its edges and corners, then orient them.</span></div><span class="step-arrow">↗</span></div></div><div class="notation"><span class="notation-icon">i</span><div><b>Cube notation, in a nutshell</b><span>R L U D F B = right, left, up, down, front, back. A <b>′</b> means turn counterclockwise; <b>2</b> means turn twice.</span></div></div></div></section>
+    <div class="keyboard-strip"><span class="keyboard-label">QUICK TURNS</span><span><kbd>R</kbd><kbd>L</kbd><kbd>U</kbd><kbd>D</kbd><kbd>F</kbd><kbd>B</kbd> turn a face</span><span class="keyboard-sep">·</span><span><kbd>⇧</kbd> + key turns the other way</span><span class="keyboard-hint">Drag cube to look around <span>↗</span></span></div>
+  </main>
+  <footer><a class="brand footer-brand" href="#"><span class="brand-mark"><i></i><i></i><i></i><i></i></span><span>CUBE<span class="brand-light">STUDIO</span></span></a><span>Made for the love of one more turn.</span><a href="#">BACK TO TOP ↑</a></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="app.js"></script>
+</body></html>
+
