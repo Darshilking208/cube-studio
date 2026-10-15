@@ -2,7 +2,7 @@ let THREE,OrbitControls;
 
 const COLORS={U:0xf7f7f3,D:0xf2cf36,F:0x45a86a,B:0x448bd1,R:0xe64f45,L:0xff8a3d};
 const LABELS={U:'UP',D:'DOWN',F:'FRONT',B:'BACK',R:'RIGHT',L:'LEFT'};
-const NORMALS={U:new THREE.Vector3(0,1,0),D:new THREE.Vector3(0,-1,0),F:new THREE.Vector3(0,0,1),B:new THREE.Vector3(0,0,-1),R:new THREE.Vector3(1,0,0),L:new THREE.Vector3(-1,0,0)};
+let NORMALS;
 const FACE_KEYS=['U','D','L','R','F','B'];
 const mount=document.querySelector('#cubeMount'),loading=document.querySelector('#loading');
 let scene,camera,renderer,controls,pieces=[],animating=false,moveTotal=0,history=[],future=[],startedAt=Date.now(),timerRunning=false,customColors={...COLORS},turnQueue=Promise.resolve();
@@ -47,5 +47,5 @@ document.querySelector('#viewReset').onclick=()=>{if(!camera)return;camera.posit
 document.querySelector('#colorPicker').oninput=e=>document.querySelector('#colorHex').textContent=e.target.value.toUpperCase();document.querySelector('#applyColor').onclick=()=>{customColors[selectedFace]=parseInt(document.querySelector('#colorPicker').value.slice(1),16);repaint();toast(`${LABELS[selectedFace]} center color updated.`)};
 window.addEventListener('keydown',e=>{if(e.target.matches('input'))return;const f=e.key.toUpperCase();if(FACE_KEYS.includes(f)){e.preventDefault();doMove(f,e.shiftKey?-1:1)}});
 // Starter theme and optional color edits are applied to each piece's fixed local sticker face.
-Promise.all([import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js'),import('https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js')]).then(([three,controls])=>{THREE=three;OrbitControls=controls.OrbitControls;makeCube();createControls()}).catch(err=>{console.error(err);loading.textContent='Could not load 3D modules. Check your internet connection and reload.'});
+Promise.all([import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js'),import('https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js')]).then(([three,controls])=>{THREE=three;OrbitControls=controls.OrbitControls;NORMALS={U:new THREE.Vector3(0,1,0),D:new THREE.Vector3(0,-1,0),F:new THREE.Vector3(0,0,1),B:new THREE.Vector3(0,0,-1),R:new THREE.Vector3(1,0,0),L:new THREE.Vector3(-1,0,0)};makeCube();createControls()}).catch(err=>{console.error(err);loading.textContent='Could not load 3D modules. Check your internet connection and reload.'});
 
